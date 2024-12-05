@@ -1,0 +1,165 @@
+import { Canvas } from '@react-three/fiber';
+import { Suspense, useEffect, useRef, useState } from 'react';
+import * as THREE from 'three';
+import {OrbitControls, PerspectiveCamera} from '@react-three/drei';
+import Button from "../components/Button.jsx";
+
+const Globe = () => {
+    const globeRef = useRef();
+
+    // This will be used to rotate the globe automatically
+    useEffect(() => {
+        const animateRotation = () => {
+            if (globeRef.current) {
+                // Rotate the globe around its Y-axis (horizontal rotation)
+                globeRef.current.rotation.y += 0.005; // Slow horizontal rotation
+            }
+            requestAnimationFrame(animateRotation); // Request the next frame
+        };
+        animateRotation();
+    }, []);
+
+    return (
+        <>
+            {/* Globe Mesh */}
+            <mesh ref={globeRef}>
+                <sphereGeometry args={[2, 64, 64]} /> {/* Increased size (radius = 2) */}
+                <meshStandardMaterial
+                    map={new THREE.TextureLoader().load("//unpkg.com/three-globe/example/img/earth-day.jpg")}
+                    bumpMap={new THREE.TextureLoader().load("//unpkg.com/three-globe/example/img/earth-topology.png")}
+                    bumpScale={0.05}
+                />
+            </mesh>
+        </>
+    );
+};
+
+const About1 = () => {
+    const [hasCopied, setHasCopied] = useState(false);
+
+    const [windowSize, setWindowSize] = useState({
+        width: window.innerWidth,
+        height: window.innerHeight,
+    });
+
+    const handleCopy = () => {
+        navigator.clipboard?.writeText('obanlaniyi42@gmail.com');
+        setHasCopied(true);
+
+        setTimeout(() => {
+            setHasCopied(false);
+        }, 2000);
+    }
+
+    // Update window size on resize
+    useEffect(() => {
+        const handleResize = () => {
+            setWindowSize({
+                width: window.innerWidth,
+                height: window.innerHeight,
+            });
+        };
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    // Adjust camera for small screens
+    const cameraPosition = windowSize.width < 768 ? [4, 0, 6] : [0, 0, 5];
+
+    return (
+        <section className="c-space my-20">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 h-full">
+                <div className="col-span-1 xl:row-span-3">
+                    <div className="grid-container">
+                        <img src="/assets/grid1.png" alt="grid-1" className="w-full sm:h-[276px] h-fit object-contain"/>
+                        <div>
+                            <p className="grid-headtext">Hi, I&apos;m Adeniyi</p>
+                            <p className="grid-subtext">
+                                With just one year of experience, I have honed and continue to develop my skills in
+                                full-stack
+                                development, with a focus on animated 3D websites.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div className="col-span-1 xl:row-span-3">
+                    <div className="grid-container">
+                        <img src="/assets/grid2.png" alt="grid-2" className="w-full sm:h-[276px] h-fit object-contain"/>
+                        <div>
+                            <p className="grid-headtext">Tech Stack</p>
+                            <p className="grid-subtext">
+                                I specialize in JavaScript and TypeScript, with a focus on React and Next.js.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="col-span-1 xl:row-span-4">
+                    <div className="grid1-container">
+                        <div className="w-full sm:h-[326px] h-fit rounded-3xl flex justify-center items-center">
+                            <Canvas>
+                                <PerspectiveCamera makeDefault position={cameraPosition}/>
+                                <Suspense fallback={null}>
+                                    {/* Lighting */}
+                                    <ambientLight intensity={0.7}/>
+                                    {/* Soft ambient light */}
+                                    <directionalLight
+                                        position={[5, 10, 5]}
+                                        intensity={1}
+                                        castShadow
+                                        shadow-mapSize-width={1024}
+                                        shadow-mapSize-height={1024}
+                                    />
+                                    {/* Globe with Atmosphere and Graticules */}
+                                    <Globe/>
+                                    {/* OrbitControls for interactivity */}
+                                    <OrbitControls/>
+                                </Suspense>
+                            </Canvas>
+                        </div>
+
+                        <div>
+                            <p className={"grid-headtext"}>I work remotely across most time zones</p>
+                            <p className={"grid-subtext"}>I&apos;m based in Nigeria, with remote work available</p>
+                            <Button name={"Contact Me"} isBeam containerClass={"w-full mt-10"}/>
+                        </div>
+                    </div>
+                </div>
+
+                <div className={"xl:col-span-2 xl:row-span-3"}>
+                    <div className={"grid-container"}>
+                        <img src={"/assets/grid3.png"} alt={"grid-3"}
+                             className={"w-full sm:h-[266px] h-fit object-contain"}/>
+                        <div>
+                            <p className="grid-headtext">
+                                My Passion for Coding
+                            </p>
+                            <p className="grid-subtext">
+                                I am deeply passionate about coding as it allows me to solve complex problems and
+                                create innovative solutions. For me, coding is not just a profession, it&apos;s a true
+                                passion that drives my continuous learning and growth in the tech industry.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div className={"xl:col-span-1 xl:row-span-2"}>
+                    <div className={"grid-container"}>
+                        <img src={"/assets/grid4.png"} alt={"grid-4"}
+                             className={"sm:h-[276px] w-full md:h-[126px] h-fit object-cover sm:object-top"}/>
+                        <div className={"space-y-2"}>
+                            <p className={"grid-subtext text-center"}> Contact Me</p>
+                            <div className={"copy-container"} onClick={handleCopy}>
+                                <img src={hasCopied ? "/assets/tick.svg" : "/assets/copy.svg"} alt={"copy"}/>
+                                <p className={"text-gray_gradient text-white font-medium md:text-md lg:text-lg"}>obanlaniyi42@gmail.com</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    );
+};
+
+export default About1;

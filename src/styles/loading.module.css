@@ -1,0 +1,137 @@
+/* styles/loading.module.css */
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 100%);
+    color: white;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    animation: fadeIn 1s ease-in-out;
+    padding: 1rem; /* Added padding to prevent text from touching edges on smaller screens */
+}
+
+.loadingText h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    animation: bounceIn 1.5s ease-in-out;
+}
+
+.loadingText p {
+    font-size: 1.5rem;
+    margin-top: 0;
+    animation: fadeInUp 2s ease-in-out;
+}
+
+/* Rocket vibration animation */
+.rocket {
+    font-size: 4rem; /* Make the rocket emoji large */
+    position: absolute;
+    bottom: 110px; /* Position the rocket at the bottom of the screen */
+    animation: shakeRocket 0.5s ease-in-out infinite; /* Apply vibration effect */
+}
+
+@keyframes shakeRocket {
+    0% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-4px); /* Move the rocket left */
+    }
+    50% {
+        transform: translateX(2px); /* Move the rocket right */
+    }
+    75% {
+        transform: translateX(-4px); /* Move the rocket left */
+    }
+    100% {
+        transform: translateX(0); /* Return to the original position */
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    60% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Media Queries for Responsiveness */
+
+/* Small screens (phones in portrait mode) */
+@media (max-width: 480px) {
+    .loadingText h1 {
+        font-size: 2rem; /* Reduce font size for smaller screens */
+    }
+
+    .loadingText p {
+        font-size: 1.2rem; /* Reduce paragraph font size */
+    }
+
+    .rocket {
+        font-size: 3rem; /* Smaller rocket for smaller screens */
+        bottom: 70px; /* Adjust rocket position */
+    }
+}
+
+/* Medium screens (phones in landscape mode and tablets) */
+@media (max-width: 768px) {
+    .loadingText h1 {
+        font-size: 2.5rem; /* Slightly smaller heading on medium screens */
+    }
+
+    .loadingText p {
+        font-size: 1.4rem; /* Adjust paragraph font size */
+    }
+
+    .rocket {
+        font-size: 3.5rem; /* Adjust rocket size */
+        bottom: 90px; /* Adjust rocket position */
+    }
+}
+
+/* Large screens (desktops, larger tablets) */
+@media (min-width: 1024px) {
+    .loadingText h1 {
+        font-size: 3.5rem; /* Keep the larger font size for desktops */
+    }
+
+    .loadingText p {
+        font-size: 1.8rem; /* Increase paragraph size */
+    }
+
+    .rocket {
+        font-size: 4.5rem; /* Larger rocket on large screens */
+        bottom: 110px; /* Position the rocket further down */
+    }
+}
