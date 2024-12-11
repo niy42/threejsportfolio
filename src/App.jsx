@@ -5,6 +5,7 @@ import DayNightCycle from "./components/DayNightCircle";
 import LoadingPage from "./components/LoadingPage.jsx";
 import About from "./sections/About.jsx";
 import Projects from "./sections/Projects.jsx";
+import Clients from "./sections/Clients.jsx";
 
 const App = () => {
     const [loading, setLoading] = useState(true);
@@ -23,6 +24,7 @@ const App = () => {
             <Hero />
             <About />
             <Projects />
+            <Clients />
 
             <DayNightCycle />
         </main>

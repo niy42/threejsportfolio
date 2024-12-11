@@ -68,7 +68,7 @@ const About = () => {
     const cameraPosition = windowSize.width < 768 ? [4, 0, 6] : [0, 0, 5];
 
     return (
-        <section className="c-space my-20">
+        <section className="c-space my-20" id={'about'}>
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 h-full">
                 <div className="col-span-1 xl:row-span-3">
                     <div className="grid-container">
@@ -154,7 +154,7 @@ const About = () => {
                 <div className={"xl:col-span-1 xl:row-span-2"}>
                     <div className={"grid-container"}>
                         <img src={"/assets/grid4.png"} alt={"grid-4"}
-                             className={"sm:h-[276px] w-full md:h-[126px] h-fit object-cover sm:object-top"}/>
+                             className={"sm:h-[156px] w-full md:h-[176px] h-fit object-cover sm:object-top"}/>
                         <div className={"space-y-2"}>
                             <p className={"grid-subtext text-center"}> Contact Me</p>
                             <div className={"copy-container"} onClick={handleCopy}>

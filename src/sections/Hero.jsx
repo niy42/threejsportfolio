@@ -101,7 +101,7 @@ export default function Hero() {
                         </Suspense>
                     </Canvas>
                     <div className={'absolute right-0 left-0 z-10 c-space w-full bottom-7 md:bottom-3 md:left-1/2 transform md:-translate-x-1/2 mx'}>
-                        <a href={'#contact'} className={'w-fit'}>
+                        <a href={'#about'} className={'w-fit'}>
                             <Button name={"Let's work together"} isBeam containerClass={"sm:w-fit w-full sm:min-w-9"}/>
                         </a>
                     </div>

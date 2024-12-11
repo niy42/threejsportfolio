@@ -1,10 +1,28 @@
-import { useRef } from 'react'
-import { useGLTF, useAnimations } from '@react-three/drei'
+import {useEffect, useRef} from 'react'
+import {useGLTF, useVideoTexture} from '@react-three/drei'
+import {useGSAP} from "@gsap/react";
+import gsap from 'gsap';
 
 const DemoComputer = (props) => {
     const group = useRef()
-    const { nodes, materials, animations } = useGLTF('/models/computer.glb')
-    const { actions } = useAnimations(animations, group)
+    const { nodes, materials } = useGLTF('/models/computer.glb');
+
+    const txt = useVideoTexture(props.texture ? props.texture : '/textures/project/project1.mp4');
+
+    useGSAP(() => {
+      gsap.from(group.current.rotation, {
+          y: Math.PI / 2,
+          x: -0.3,
+          duration: 1.5,
+          ease: 'elastic.out(1, 0.9)'
+      })
+    }, [txt]);
+
+    useEffect(() => {
+        if(txt){
+            txt.flipY = false;
+        }
+    }, [txt]);
 
     return (
         <group ref={group} {...props} dispose={null}>
@@ -17,8 +35,10 @@ const DemoComputer = (props) => {
                     material={nodes['monitor-screen'].material}
                     position={[0.127, 1.831, 0.511]}
                     rotation={[1.571, -0.005, 0.031]}
+
                     scale={[0.661, 0.608, 0.401]}
-                />
+                ><meshBasicMaterial map={txt}/>
+                </mesh>
                 <group
                     name="RootNode"
                     position={[0, 1.093, 0]}
