@@ -3,6 +3,7 @@ import { Suspense, useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 import {OrbitControls, PerspectiveCamera} from '@react-three/drei';
 import Button from "../components/Button.jsx";
+import {projectItem} from "./Projects.jsx";
 
 const Globe = () => {
     const globeRef = useRef();
@@ -34,7 +35,7 @@ const Globe = () => {
     );
 };
 
-const About1 = () => {
+const About = () => {
     const [hasCopied, setHasCopied] = useState(false);
 
     const [windowSize, setWindowSize] = useState({
@@ -95,7 +96,11 @@ const About1 = () => {
                 </div>
 
                 <div className="col-span-1 xl:row-span-4">
-                    <div className="grid1-container">
+                    <div className="grid1-container relative">
+                        <div className={"absolute top-0 right-0"}>
+                            <img src={projectItem} alt={"spotlight"}
+                                 className={"w-full h-96 object-cover rounded-xl"}/>
+                        </div>
                         <div className="w-full sm:h-[326px] h-fit rounded-3xl flex justify-center items-center">
                             <Canvas>
                                 <PerspectiveCamera makeDefault position={cameraPosition}/>
@@ -113,7 +118,10 @@ const About1 = () => {
                                     {/* Globe with Atmosphere and Graticules */}
                                     <Globe/>
                                     {/* OrbitControls for interactivity */}
-                                    <OrbitControls/>
+                                    <OrbitControls
+                                        minDistance={4.8}
+                                        maxDistance={10}
+                                    />
                                 </Suspense>
                             </Canvas>
                         </div>
@@ -162,4 +170,4 @@ const About1 = () => {
     );
 };
 
-export default About1;
+export default About;

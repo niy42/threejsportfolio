@@ -1,9 +1,10 @@
-import React, {useEffect, useState} from 'react'
+import {useEffect, useState} from 'react'
 import Navbar from "./sections/Navbar.jsx";
 import Hero from "./sections/Hero.jsx";
 import DayNightCycle from "./components/DayNightCircle";
 import LoadingPage from "./components/LoadingPage.jsx";
-import About1 from "./sections/About1.jsx";
+import About from "./sections/About.jsx";
+import Projects from "./sections/Projects.jsx";
 
 const App = () => {
     const [loading, setLoading] = useState(true);
@@ -20,7 +21,9 @@ const App = () => {
         <main className="max-w-7xl mx-auto">
             <Navbar />
             <Hero />
-            <About1 />
+            <About />
+            <Projects />
+
             <DayNightCycle />
         </main>
     )
