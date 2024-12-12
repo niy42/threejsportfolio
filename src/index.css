@@ -6,6 +6,8 @@
 
 * {
   scroll-behavior: smooth;
+  --tw-text-opacity: 1;
+  --tw-bg-opacity: 1;
 }
 
 body {
@@ -141,6 +143,23 @@ body {
     @apply w-full bg-black-300 px-5 py-2 min-h-14 rounded-lg placeholder:text-white-500 text-lg text-white-800 shadow-black-200 shadow-2xl focus:outline-none;
   }
 
+  .field-input_mod {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 0.375rem;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    background-color: rgba(28,28,33);
+    outline: none;
+    min-height: 3.5rem;
+    color: rgb(228 228 230 / var(--tw-text-opacity)); /* Text color */
+  }
+
+  .field-input_mod::placeholder {
+    color: rgb(98 100 108 / var(--tw-text-opacity)); /* Placeholder color */
+    /*opacity: 0.6; /* Adjust transparency */
+  }
+
   .field-btn {
     @apply bg-black-500 px-5 py-2 min-h-12 rounded-lg shadow-black-200 shadow-2xl flex justify-center items-center text-lg text-white gap-3;
   }
@@ -153,6 +172,46 @@ body {
   .social-icon {
     @apply w-12 h-12 rounded-full flex justify-center items-center bg-black-300 border border-black-200;
   }
+}
+
+.head-text_form {
+  margin-top: 3rem; /* Adds space between "Let's Talk" and the top border */
+}
+
+.btn-primary:hover {
+  background-color: #2b4a4a;
+}
+
+.field-input_mod {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 0.375rem;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  background-color: rgba(28,28,33);
+  outline: none;
+  min-height: 3.5rem;
+  color: rgb(228 228 230 / var(--tw-text-opacity));
+}
+
+.field-input_mod::placeholder {
+  color: rgb(98 100 108 / var(--tw-text-opacity));
+  opacity: 0.6;
+}
+
+.btn-primary {
+  display: inline-block;
+  margin-bottom: 16rem; /* Adds space between the button and the bottom border */
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.375rem;
+  background-color:  rgb(58 58 73 / var(--tw-bg-opacity));
+  color: #fff;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: auto; /* Ensure the button width fits the content */
 }
 
 .waving-hand {
@@ -173,7 +232,7 @@ body {
   );
 }
 
-@keyframes wave-animation {
+/*@keyframes wave-animation {
   0% {
     transform: rotate(0deg);
   }
@@ -198,7 +257,7 @@ body {
   100% {
     transform: rotate(0deg);
   }
-}
+}*/
 
 .dot1 {
   position: fixed;
