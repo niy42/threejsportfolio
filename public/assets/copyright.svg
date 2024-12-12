@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="ionicon" width="16" height="16" fill="#B3B3B3">
+    <!-- Outer Circle -->
+    <circle cx="256" cy="256" r="240" fill="none" stroke="#B3B3B3" stroke-width="16" />
+    <!-- Inner "C" -->
+    <path
+            d="M296 336c-26.5 0-48-21.5-48-48s21.5-48 48-48c9.9 0 19.2 3.6 26.7 9.5l20.6-20.6C329 218.6 313.4 208 296 208c-44.2 0-80 35.8-80 80s35.8 80 80 80c17.4 0 33-10.6 47.3-28.9l-20.6-20.6c-7.5 5.9-16.8 9.5-26.7 9.5z"
+            fill="#B3B3B3"
+    />
+</svg>

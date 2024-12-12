@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="ionicon">
+    <!-- Blue Circle Background -->
+    <circle cx="256" cy="256" r="256" fill="#0077B5" />
+
+    <!-- "in" Logo -->
+    <path
+            d="M190 370h-60V190h60v180zm-30-202c-18 0-32-14-32-32s14-32 32-32 32 14 32 32-14 32-32 32zm210 202h-60v-90c0-22-8-40-30-40s-35 18-35 40v90h-60V190h60v25c10-15 30-25 55-25 40 0 70 27 70 85v95z"
+            fill="#fff"
+    />
+</svg>
