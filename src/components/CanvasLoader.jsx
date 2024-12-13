@@ -21,7 +21,7 @@ const CanvasLoader = () => {
             <p style={{ fontSize: 14, color: "#F1F1F1", fontWeight: 800, marginTop: 40 }}>
                 {isNaN(progress) || progress === 0 ? "Loading..." : `${progress.toFixed(2)} %`}
             </p>
-            CanvasLoader
+            updating...
         </Html>
     );
 }

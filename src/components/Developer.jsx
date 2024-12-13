@@ -6,34 +6,56 @@ import React, { useEffect, useRef } from 'react';
 import { useAnimations, useFBX, useGLTF } from '@react-three/drei';
 import { Suspense } from 'react';
 
-export default function Developer({ animationName = 'clapping', ...props }) {
-    const { nodes, materials } = useGLTF('/models/human/developer.glb');
+export default function Developer({ animationName = 'idle', ...props }) {
+    const { nodes, materials } = useGLTF('/models/human/developerblue.glb');
 
     // Load the idle animation using useFBX
-    const { animations: idleAnimations } = useFBX('/models/animations/clapping.fbx');
-    idleAnimations[0].name = "clapping"; // Ensure the animation is named "idle"
+    const { animations: idleAnimation } = useFBX('/models/animations/idle.fbx');
+    idleAnimation[0].name = "idle"; // Ensure the animation is named "idle"
+
+    // Load the salute animation using useFBX
+    const { animations: saluteAnimation } = useFBX('/models/animations/salute.fbx');
+    saluteAnimation[0].name = "salute"; // Ensure the animation is named "salute"
+
+    // Load the clapping animation using useFBX
+    const { animations: clappingAnimation } = useFBX('/models/animations/clapping.fbx');
+    clappingAnimation[0].name = "clapping"; // Ensure the animation is named "clapping"
+
+    // Load the victory animation using useFBX
+    const { animations: victoryAnimation } = useFBX('/models/animations/victory.fbx');
+    victoryAnimation[0].name = "victory"; // Ensure the animation is named "victory"
 
     const group = useRef();
-    const { actions } = useAnimations([idleAnimations[0]], group); // Bind animations to the group
+    const { actions } = useAnimations(
+        [
+            idleAnimation[0],
+            clappingAnimation[0],
+            victoryAnimation[0],
+            saluteAnimation[0]
+        ],
+        group
+    );
 
+    // UseEffect to manage animation changes
     useEffect(() => {
-        if (actions && actions[animationName]) {
+        if (actions && animationName && actions[animationName]) {
             actions[animationName].reset().fadeIn(0.5).play();
         } else {
             console.error(`Animation ${animationName} not found.`);
         }
 
-        // Cleanup on unmount
+        // Cleanup when animation is changed or component is unmounted
         return () => {
-            if (actions && actions[animationName]) {
+            if (actions && animationName && actions[animationName]) {
                 actions[animationName].fadeOut(0.5);
             }
         };
-    }, [actions, animationName]);
+    }, [animationName, actions]); // Depend on animationName and actions to avoid unnecessary updates
 
+    // Model with Dada -- hair
     return (
         <Suspense fallback={null}>
-            <group {...props} dispose={null} ref={group}>
+            <group ref={group} {...props} dispose={null}>
                 <primitive object={nodes.Hips} />
                 <skinnedMesh
                     name="EyeLeft"
@@ -68,6 +90,11 @@ export default function Developer({ animationName = 'clapping', ...props }) {
                     morphTargetInfluences={nodes.Wolf3D_Teeth.morphTargetInfluences}
                 />
                 <skinnedMesh
+                    geometry={nodes.Wolf3D_Hair.geometry}
+                    material={materials.Wolf3D_Hair}
+                    skeleton={nodes.Wolf3D_Hair.skeleton}
+                />
+                <skinnedMesh
                     geometry={nodes.Wolf3D_Glasses.geometry}
                     material={materials.Wolf3D_Glasses}
                     skeleton={nodes.Wolf3D_Glasses.skeleton}
@@ -97,8 +124,10 @@ export default function Developer({ animationName = 'clapping', ...props }) {
     );
 }
 
-export function DeveloperModel({ animateName = 'idle', ...props }) {
-    const { nodes, materials } = useGLTF('/models/human/bluecloth.glb');
+useGLTF.preload('/models/human/developerblue.glb');
+
+/*export function DeveloperModel({ animateName = 'idle', ...props }) {
+    const { nodes, materials } = useGLTF('/models/animations/developer.glb');
     const group = useRef();
 
     // Function to load animations asynchronously
@@ -172,9 +201,10 @@ export function DeveloperModel({ animateName = 'idle', ...props }) {
         };
     }, [actions, animateName]);
 
+// Model without Dada - hair
     return (
         <Suspense fallback={null}>
-            <group ref={group} {...props} dispose={null}>
+            <group {...props} dispose={null} ref={group}>
                 <primitive object={nodes.Hips} />
                 <skinnedMesh
                     name="EyeLeft"
@@ -209,11 +239,6 @@ export function DeveloperModel({ animateName = 'idle', ...props }) {
                     morphTargetInfluences={nodes.Wolf3D_Teeth.morphTargetInfluences}
                 />
                 <skinnedMesh
-                    geometry={nodes.Wolf3D_Hair.geometry}
-                    material={materials.Wolf3D_Hair}
-                    skeleton={nodes.Wolf3D_Hair.skeleton}
-                />
-                <skinnedMesh
                     geometry={nodes.Wolf3D_Glasses.geometry}
                     material={materials.Wolf3D_Glasses}
                     skeleton={nodes.Wolf3D_Glasses.skeleton}
@@ -243,4 +268,4 @@ export function DeveloperModel({ animateName = 'idle', ...props }) {
     );
 }
 
-useGLTF.preload('/models/human/bluecloth.glb');
+useGLTF.preload('/models/human/developerblue.glb');*/

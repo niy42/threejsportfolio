@@ -1,13 +1,12 @@
 import {Canvas} from "@react-three/fiber";
 import {workExperiences} from "../constants/index.js";
 import {OrbitControls, PerspectiveCamera} from "@react-three/drei";
-import CanvasLoader from "../components/CanvasLoader.jsx";
+// import CanvasLoader from "../components/CanvasLoader.jsx";
 import {Suspense, useState} from "react";
-import Developer, {DeveloperModel} from "../components/Developer.jsx";
+import Developer from "../components/Developer.jsx";
 
 const Experience = function(){
     const[animationName, setAnimationName] = useState('idle');
-
 
     return(
         <section className={"c-space my-20"}>
@@ -16,13 +15,29 @@ const Experience = function(){
                 <div className={"work-container"}>
                     <div className={"work-canvas"}>
                         <Canvas>
-                            <ambientLight intensity={7}/>
-                            <spotLight position={[10, 10, 10]} angle={0.15} penubra={1}/>
+                            {/* Perspective Camera for a top-down view */}
+                            <PerspectiveCamera
+                                makeDefault
+                                position={[0, 5, 5]}  // Position the camera above the model
+                                rotation={[-Math.PI / 2, 0, 0]}  // Rotate the camera to look down
+                            />
+
+                            <ambientLight intensity={2}/>
+                            {/* Lighting to illuminate the scene */}
                             <directionalLight position={[10, 10, 10]} intensity={1}/>
-                            <OrbitControls enableZoom={false} maxPolarAngle={Math.PI / 2}/>
-                            <Suspense fallback={<CanvasLoader/>}>
-                                <DeveloperModel position-y={-3} scale={3} animateName={animationName}/>
+                            <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1}/>
+                            {/* Additional lighting */}
+
+                            {/* Suspense to load 3D content */}
+                            <Suspense fallback={null}>
+                                <Developer
+                                    position={[0, -1, 2]}  // Position the model closer to the viewer
+                                    rotation={[0, 0, 0]}  // Rotate the model to view it from the top
+                                    scale={2.5}  // Scale the model
+                                    animationName={animationName}
+                                />
                             </Suspense>
+                            <OrbitControls enableZoom={false}/>
                         </Canvas>
                     </div>
 
