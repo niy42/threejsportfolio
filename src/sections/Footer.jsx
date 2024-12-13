@@ -20,11 +20,7 @@ export default function Footer() {
                         <img src={"assets/linked.svg"} alt={"LinkedIn"} className={"w-1/2 h-1/2"}/>
                     </div>
                 </div>
-
-
                     <p className={"text-white-600"}> <span className={"text-lg"}>©</span> 2024 Adeniyi. All rights reserved.</p>
-
-
             </footer>
         </section>
     )

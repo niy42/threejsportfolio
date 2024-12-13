@@ -8,6 +8,7 @@ import Projects from "./sections/Projects.jsx";
 import Clients from "./sections/Clients.jsx";
 import Contact from "./sections/Contact.jsx";
 import Footer from "./sections/Footer.jsx";
+import Experience from "./sections/Experience.jsx";
 
 const App = () => {
     const [loading, setLoading] = useState(true);
@@ -27,6 +28,7 @@ const App = () => {
             <About />
             <Projects />
             <Clients />
+            <Experience />
             <Contact />
             <Footer />
             <DayNightCycle />
