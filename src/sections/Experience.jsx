@@ -9,7 +9,7 @@ const Experience = function(){
     const[animationName, setAnimationName] = useState('idle');
 
     return(
-        <section className={"c-space my-20"}>
+        <section className={"c-space mt-20 mb-0 md:my-20"} id={"work"}>
             <div className={"w-full text-white-600"}>
                 <h3 className={"head-text"}>My Work Experience</h3>
                 <div className={"work-container"}>
@@ -18,7 +18,7 @@ const Experience = function(){
                             {/* Perspective Camera for a top-down view */}
                             <PerspectiveCamera
                                 makeDefault
-                                position={[0, 5, 5]}  // Position the camera above the model
+                                position={[-0.15, 5.2, 4.5]}  // Position the camera above the model
                                 rotation={[-Math.PI / 2, 0, 0]}  // Rotate the camera to look down
                             />
 

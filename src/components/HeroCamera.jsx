@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import { easing } from "maath";
 
-export default function HeroCamera({ children, isMobile }) {
+export default function HeroCamera({ children, isMobile, isSmall}) {
     const groupRef = useRef(null);
 
     // For auto-rotation effect on mobile devices
@@ -14,7 +14,7 @@ export default function HeroCamera({ children, isMobile }) {
         easing.damp3(state.camera?.position, [0, 0, 30], 0.025, delta);
 
         // For mobile: Apply automatic rotation
-        if (isMobile) {
+        if (isMobile || isSmall) {
             rotationAmount += autoRotationSpeed; // Increment rotation for auto-rotation effect
             if (groupRef.current) {
                 // Apply the auto-rotation to the group (camera or objects)

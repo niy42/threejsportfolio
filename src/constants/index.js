@@ -246,16 +246,115 @@ export const myProjects = [
     },
 ];
 
-export const calculateSizes = (isSmall, isMobile, isTablet) => {
+export const calculateSizes = (isSmall, isMobile, isTablet ) => {
+    return {
+        // Adjust scale and position for the computer desk
+        deskPosition: isSmall
+            ? [-0.5, -2.0, 0]
+            : isMobile
+                ? [-0.8, -4.5, 0]
+                : isTablet
+                    ? [-1.25, -4.5, 0]
+                    : [0.5, -8.0, 0], // Large screens
+
+        // Adjust position for the cube
+        cubePosition: isSmall
+            ? [4, -8, 0]
+            : isMobile
+                ? [4, -8, 0]
+                : isTablet
+                    ? [6, -10, 0]
+                    : [5, -12, -1], // Large screens
+
+        // Adjust position for the React logo
+        reactLogoPosition: isSmall
+            ? [2, 3, 0]
+            : isMobile
+                ? [4, 3, 0]
+                : isTablet
+                    ? [6, 4, 0]
+                    : [6, 0, 0], // Large screens
+
+        // Adjust position for the rings
+        ringPosition: isSmall
+            ? [-8, 10, 0]
+            : isMobile
+                ? [-6, 8, 0]
+                : isTablet
+                    ? [-14, 9, 0]
+                    : [-10, 5, 0], // Large screens
+
+        // Adjust position for the target
+        targetPosition: isSmall
+            ? [-4, -14, -10]
+            : isMobile
+                ? [-6, -10, -10]
+                : isTablet
+                    ? [-10, -12, -10]
+                    : [-14, -10, -15], // Large screens
+    };
+};
+
+/*export const calculateSizes = (isSmall, isMobile, isTablet) => {
     return {
         //deskScale: isSmall ? 0.05 : isMobile ? 0.06 : 0.065,
         deskPosition: isMobile ? [-0.8, -4.0, 0] : [0.25, -7.5, 0],
         cubePosition: isSmall ? [4, -8, 0] : isMobile ? [7, -10, 0] : isTablet ? [5, -5, 0] : [18, -5.5, 0],
         reactLogoPosition: isSmall ? [3, 4, 0] : isMobile ? [5, 4, 0] : isTablet ? [5, 4, 0] : [12, -1, 0],
         ringPosition: isSmall ? [-5, 7, 0] : isMobile ? [-10, 10, 0] : isTablet ? [-12, 10, 0] : [-32, 16, 0],
-        targetPosition: isSmall ? [-5, -10, -10] : isMobile ? [-9, -10, -10] : isTablet ? [-11, -7, -10] : [-13, -13, -10],
+        targetPosition: isSmall ? [-5, -15, -10] : isMobile ? [-9, -10, -10] : isTablet ? [-11, -7, -10] : [-13, -13, -10],
+    };
+};*/
+
+/*export const calculateSizes = (isSmall, isMobile, isTablet) => {
+    const positions = {
+        cubePosition: isSmall
+            ? [4, -7, 0]
+            : isMobile
+                ? [6, -9, 0]
+                : isTablet
+                    ? [7, -7, 0]
+                    : [10, -5.5, 0],
+
+        reactLogoPosition: isSmall
+            ? [3, 3.5, 0]
+            : isMobile
+                ? [4.5, 4, 0]
+                : isTablet
+                    ? [6, 4.5, 0]
+                    : [10, 3, 0],
+
+        ringPosition: isSmall
+            ? [-5, 6, 0]
+            : isMobile
+                ? [-8, 8, 0]
+                : isTablet
+                    ? [-10, 9, 0]
+                    : [-12, 12, 0],
+
+        targetPosition: isSmall
+            ? [-4, -9, -10]
+            : isMobile
+                ? [-6, -9.5, -10]
+                : isTablet
+                    ? [-8, -10, -10]
+                    : [-10, -10, -10],
+    };
+
+    // Calculate the center position for the desk
+    const deskPosition = [
+        (positions.cubePosition[0] + positions.reactLogoPosition[0] + positions.ringPosition[0] + positions.targetPosition[0]) / 4,
+        (positions.cubePosition[1] + positions.reactLogoPosition[1] + positions.ringPosition[1] + positions.targetPosition[1]) / 4,
+        (positions.cubePosition[2] + positions.reactLogoPosition[2] + positions.ringPosition[2] + positions.targetPosition[2]) / 4,
+    ];
+
+    return {
+        ...positions,
+        deskPosition,
     };
 };
+*/
+
 
 export const workExperiences = [
     {

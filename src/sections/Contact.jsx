@@ -1,7 +1,9 @@
 import { useRef, useState } from "react";
 import * as emailjs from '@emailjs/browser';
+import {useMediaQuery} from "react-responsive";
 
 const Contact = () => {
+    const isMobile = useMediaQuery({ maxWidth: 440});
     const formRef = useRef(null);
     const [form, setForm] = useState({
         name: '',
@@ -50,9 +52,10 @@ const Contact = () => {
     };
 
     return (
-        <section className="c-space my-20">
+        <section className="c-space my-5 md:my-20" id={'contact'}>
             <div className="relative flex items-center justify-center flex-col min-h-screen">
-               <img src={"/assets/terminal.png"} alt={"terminal background"} className={"absolute inset-0 min-h-screen"}/>
+                {!isMobile && (<img src={"/assets/terminal.png"} alt={"terminal background"}
+                                   className={"absolute inset-0 min-h-screen"}/>)}
                 <div className="contact-container">
                     <h3 className="head-text head-text_form">Let&apos;s talk</h3>
                     <p className="text-lg text-white-600 mt-3">
