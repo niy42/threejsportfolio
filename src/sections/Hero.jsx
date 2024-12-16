@@ -58,7 +58,7 @@ export default function Hero() {
                 : [0, 0, 30]; // Camera position adjusts based on screen size
 
     return (
-        <section className="min-h-screen w-full flex flex-col relative" id={"home"}>
+        <section className="min-h-screen w-full flex flex-col relative max-sm:py-8" id={"home"}>
             <div className="w-full mx-auto flex flex-col sm:mt-36 mt-20 gap-3">
                 <div className="mx-auto inline-flex items-center space-x-2">
                     <p className="sm:text-3xl text-xl font-medium text-white font-generalsans">
@@ -78,8 +78,7 @@ export default function Hero() {
                         <Suspense fallback={<CanvasLoader />}>
                             <PerspectiveCamera makeDefault position={cameraPosition} />
                             <HeroCamera
-                                isMobile={isMobile}
-                                isSmall={{isSmall}}
+                                isSmall={isSmall}
                             >
                                 <ComputerDeskModel
                                     position={sizes.deskPosition}

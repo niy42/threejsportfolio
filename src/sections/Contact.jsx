@@ -23,6 +23,8 @@ const Contact = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        console.log("Sending email from:", form.email); // Check the email being sent
+
         setLoading(true);
 
         try {
@@ -32,7 +34,7 @@ const Contact = () => {
                 {
                     from_name: form.name,
                     to_name: "Adeniyi",
-                    from_email: form.email,
+                    reply_to: form.email,
                     to_email: 'obanlaniyi42@gmail.com',
                     message: form.message
                 }, 'ddMccg8aDfcuVdfLl'
@@ -59,9 +61,11 @@ const Contact = () => {
                 <div className="contact-container">
                     <h3 className="head-text head-text_form">Let&apos;s talk</h3>
                     <p className="text-lg text-white-600 mt-3">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation laborum.
+                        I&apo;m excited to hear from you! Whether you have a question, want to collaborate, or just want to
+                        say hello, feel free to reach out. I'll get back to you as soon as possible. Let's connect and
+                        make something amazing together!
                     </p>
+
                     <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col space-y-4 sm:space-y-7 mt-12">
                         <label>
                             <span className="field-label">Full Name</span>
