@@ -61,7 +61,7 @@ const Contact = () => {
                 <div className="contact-container">
                     <h3 className="head-text head-text_form">Let&apos;s talk</h3>
                     <p className="text-lg text-white-600 mt-3">
-                        I&apo;m excited to hear from you! Whether you have a question, want to collaborate, or just want to
+                        I&apos;m excited to hear from you! Whether you have a question, want to collaborate, or just want to
                         say hello, feel free to reach out. I'll get back to you as soon as possible. Let's connect and
                         make something amazing together!
                     </p>

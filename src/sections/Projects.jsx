@@ -29,7 +29,7 @@ export default function Projects() {
                      <img src={currentProject.spotlight} alt={"spotlight"} className={"w-full h-96 object-cover rounded-xl"}/>
                  </div>
                  <div className={"p-3 backdrop-filter backdrop-blur-3xl w-fit rounded-lg"} style={myProjects[0].logoStyle}>
-                     <img src={currentProject.logo} alt={"logo"} className={"w-10 h-10 shadow-sm"}/>
+                     <img src={currentProject.logo} alt={"logo"} className={"w-8 h-8 shadow-sm"}/>
                  </div>
                  <div className={"flex flex-col gap-5 text-white-600 my-5"}>
                      <p className={"text-white text-2xl font-semibold animatedText"}>{currentProject.title}</p>
@@ -70,7 +70,7 @@ export default function Projects() {
                      <Center>
                          <Suspense fallback={<CanvasLoader />}>
                              <group scale={2} position={[0, -3 , 0]} rotation={[0, -0.1, 0]}>
-                                 <DemoComputer texture={currentProject.texture}/>
+                                 <DemoComputer texture={currentProject.texture }/>
                              </group>
                          </Suspense>
                      </Center>

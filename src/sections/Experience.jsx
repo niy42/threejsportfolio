@@ -1,5 +1,5 @@
 import {Canvas} from "@react-three/fiber";
-import {workExperiences} from "../constants/index.js";
+import {workSpace} from "../constants/index.js";
 import {OrbitControls, PerspectiveCamera} from "@react-three/drei";
 // import CanvasLoader from "../components/CanvasLoader.jsx";
 import {Suspense, useState} from "react";
@@ -11,7 +11,7 @@ const Experience = function(){
     return(
         <section className={"c-space mt-20 mb-0 md:my-20"} id={"work"}>
             <div className={"w-full text-white-600"}>
-                <h3 className={"head-text"}>My Work Experience</h3>
+                <h3 className={"head-text"}>My Design Tools</h3>
                 <div className={"work-container"}>
                     <div className={"work-canvas"}>
                         <Canvas>
@@ -43,7 +43,7 @@ const Experience = function(){
 
                     <div className={"work-content"}>
                         <div className={"sm:py-10 py-5 sm:px-5 px-2.5"}>
-                            {workExperiences.map((
+                            {workSpace.map((
                                 {
                                     id,
                                     name,
