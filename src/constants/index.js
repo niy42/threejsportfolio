@@ -173,7 +173,7 @@ export const myProjects = [
             'Built with Next.js 14 Appwrite, Dwolla and Plaid, Horizon ensures a smooth and secure banking experience, tailored to meet the needs of modern consumers.',
         href: '',
         texture: '/textures/project/project4.mp4',
-        logo: '/assets/project-logo4.png',
+        logo: '/assets/tap.webp',
         logoStyle: {
             backgroundColor: '#0E1F38',
             border: '0.2px solid #0E2D58',
@@ -203,7 +203,7 @@ export const myProjects = [
             },
         ],
     },
-    {
+    /*{
         title: 'Imaginify - AI Photo Manipulation App',
         desc: 'Imaginify is a groundbreaking Software-as-a-Service application that empowers users to create stunning photo manipulations using AI technology. With features like AI-driven image editing, a payments system, and a credits-based model.',
         subdesc:
@@ -239,7 +239,7 @@ export const myProjects = [
                 path: '/assets/framer.png',
             },
         ],
-    },
+    },*/
 ];
 
 export const calculateSizes = (isSmall, isMobile, isTablet ) => {
