@@ -25,7 +25,8 @@ export const clientReviews = [
     {
         "id": 1,
         "name": "Adebayo Oluwaseun",
-        "position": "Head of Digital Marketing at AlphaTech Solutions",
+        "position": `Head of Digital Marketing
+                     at AlphaTech Solutions`,
         "img": "assets/bayo.jpg",
         "review": "Adeniyi was fantastic to work with. He grasped our vision quickly and created a website that surpassed all expectations. His expertise in both frontend and backend development is outstanding. Highly recommend his services!"
     },

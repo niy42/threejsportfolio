@@ -22,7 +22,7 @@ const App = () => {
         return <LoadingPage />;
     }
     return (
-        <main className="max-w-7xl mx-auto">
+        <main className="max-w-7xl mx-auto overflow-x-hidden;">
             <Navbar />
             <Hero />
             <About />

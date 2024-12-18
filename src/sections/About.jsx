@@ -4,6 +4,7 @@ import * as THREE from 'three';
 import {OrbitControls, PerspectiveCamera} from '@react-three/drei';
 import Button from "../components/Button.jsx";
 import {projectItem} from "./Projects.jsx";
+import {useMediaQuery} from "react-responsive";
 
 const Globe = () => {
     const globeRef = useRef();
@@ -37,6 +38,8 @@ const Globe = () => {
 
 const About = () => {
     const [hasCopied, setHasCopied] = useState(false);
+
+    const isSmall = useMediaQuery({ maxWidth: 480 }); // Small screens (e.g., phones)
 
     const [windowSize, setWindowSize] = useState({
         width: window.innerWidth,
@@ -101,7 +104,7 @@ const About = () => {
                             <img src={projectItem} alt={"spotlight"}
                                  className={"w-full h-96 object-cover rounded-xl"}/>
                         </div>
-                        <div className="w-full sm:h-[326px] h-fit rounded-3xl flex justify-center items-center">
+                        <div className="w-full sm:h-[326px] h-96 rounded-3xl flex justify-center items-center">
                             <Canvas>
                                 <PerspectiveCamera makeDefault position={cameraPosition}/>
                                 <Suspense fallback={null}>
@@ -119,7 +122,7 @@ const About = () => {
                                     <Globe/>
                                     {/* OrbitControls for interactivity */}
                                     <OrbitControls
-                                        minDistance={4.8}
+                                        minDistance={isSmall ? 6.1 : 4.8}
                                         maxDistance={10}
                                     />
                                 </Suspense>
