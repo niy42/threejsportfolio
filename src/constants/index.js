@@ -58,7 +58,7 @@ export const myProjects = [
         desc: "Sourcely is a cutting-edge platform dedicated to providing honest, in-depth reviews of the latest products across various categories. With expert insights, user-generated ratings, and comprehensive comparisons, Sourcely helps you make informed purchasing decisions with confidence.",
         subdesc: "Leveraging advanced technologies like Next.js 14, Tailwind CSS, TypeScript, Framer Motion, and Convex, Sourcely ensures a fast, seamless, and visually engaging user experience. Whether you're shopping for tech, lifestyle, or home essentials, Sourcely is your go-to source for reliable product reviews.",
         href: 'https://drive.google.com/file/d/1hrpewjHoaukmTo9oJOn9vtgTVPmcXJJ6/view?usp=drive_link',
-        texture: '/textures/project/project1.mp4',
+        texture: '/textures/project/screen1.mp4',
         logo: '/assets/seo.webp',
         logoStyle: {
             backgroundColor: '#2A1816',
@@ -90,11 +90,11 @@ export const myProjects = [
         ],
     },
     {
-        title: "AvaxGod - NFT Battle Card Game",
-        desc: "AvaxGod is a thrilling NFT-powered battle card game where strategy, skill, and blockchain technology collide. Build your deck, unleash powerful gods, and compete in epic battles to claim victory and exclusive rewards. Each card is a unique NFT, adding rarity and value to your gameplay experience.",
+        title: "AvaxGods - NFT Battle Card Game",
+        desc: "AvaxGods is a thrilling NFT-powered battle card game where strategy, skill, and blockchain technology collide. Build your deck, unleash powerful gods, and compete in epic battles to claim victory and exclusive rewards. Each card is a unique NFT, adding rarity and value to your gameplay experience.",
         subdesc: "Built on the Avalanche blockchain, AvaxGod combines stunning visuals, seamless gameplay, and decentralized ownership. Whether you're a seasoned gamer or new to NFTs, AvaxGod offers an immersive experience with play-to-earn mechanics and a vibrant player community.",
         href: 'https://drive.google.com/file/d/1NlYFaB36j0RFqkLBiNIP2Sz1YMnPaSp6/view?usp=drive_link',
-        texture: '/textures/project/project2.mp4',
+        texture: '/textures/project/screen2.mp4',
         logo: '/assets/sword.png',
         logoStyle: {
             backgroundColor: '#13202F',
@@ -135,7 +135,7 @@ export const myProjects = [
         desc: "Threads Clone App is a sleek and modern social networking platform designed to facilitate dynamic, real-time conversations. Share your thoughts, connect with communities, and stay updated with trending topics in an engaging and minimalist interface.",
         subdesc: "Powered by cutting-edge technologies like Next.js 14, Tailwind CSS, TypeScript, and scalable backend solutions, Threads Clone App ensures a smooth, responsive, and secure user experience. Whether you're a casual user or a content creator, this platform is built to keep you connected.",
         href: 'https://drive.google.com/file/d/1kqpz4EWM3AXX4iYMQYoxJAYTyKHA6Efk/view?usp=drive_link',
-        texture: '/textures/project/project3.mp4',
+        texture: '/textures/project/screen3.mp4',
         logo: '/assets/threads_logo.svg',
         logoStyle: {
             backgroundColor: '#60f5a1',
@@ -174,7 +174,7 @@ export const myProjects = [
         desc: "Hamster Combat is a fun and addictive tap-to-earn game on Telegram where feisty hamsters battle it out for supremacy. Test your reflexes, tap your way to victory, and earn rewards in this action-packed, fast-paced game designed for all skill levels.",
         subdesc: "Optimized for Telegram, Hamster Combat combines engaging gameplay with the excitement of earning as you play. With a simple interface, quick matches, and rewarding mechanics, it's perfect for gamers looking for quick fun and tangible rewards.",
         href: 'https://drive.google.com/file/d/1Ryvc5rs1-Z-dtQBnk_BUemEuJqKHCTnj/view?usp=drive_link',
-        texture: '/textures/project/project4.mp4',
+        texture: '/textures/project/screen4.mp4',
         logo: '/assets/tap.webp',
         logoStyle: {
             backgroundColor: '#0E1F38',
