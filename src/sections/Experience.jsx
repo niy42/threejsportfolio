@@ -12,7 +12,7 @@ const Experience = function () {
     useEffect(() => {
         AOS.init({
             duration: 1000,  // Animation duration
-            once: false,      // Animation happens only once
+            once: false,      // Animation happens only once when true
             easing: 'ease-in-out',
         });
     }, []);
