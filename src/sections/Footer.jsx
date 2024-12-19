@@ -14,7 +14,7 @@ export default function Footer() {
                         <img src={"assets/github.svg"} alt={"github"} className={"w-1/2 h-1/2"}/>
                     </div>
                     <div className={"social-icon"}>
-                        <img src={"assets/x.svg"} alt={"X"} className={"w-1/2 h-1/2"}/>
+                        <img src={"assets/xcom.svg"} alt={"X"} className={"w-1/2 h-1/2"}/>
                     </div>
                     <div className={"social-icon"}>
                         <img src={"assets/linked.svg"} alt={"LinkedIn"} className={"w-1/2 h-1/2"}/>
