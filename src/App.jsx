@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react'
 import Navbar from "./sections/Navbar.jsx";
 import Hero from "./sections/Hero.jsx";
-import DayNightCycle from "./components/DayNightCircle";
+// import DayNightCycle from "./components/DayNightCircle";
 import LoadingPage from "./components/LoadingPage.jsx";
 import About from "./sections/About.jsx";
 import Projects from "./sections/Projects.jsx";
@@ -9,6 +9,7 @@ import Clients from "./sections/Clients.jsx";
 import Contact from "./sections/Contact.jsx";
 import Footer from "./sections/Footer.jsx";
 import Experience from "./sections/Experience.jsx";
+import StarsCanvas from "./components/DayNightCircle";
 
 const App = () => {
     const [loading, setLoading] = useState(true);
@@ -31,7 +32,7 @@ const App = () => {
             <Experience />
             <Contact />
             <Footer />
-            <DayNightCycle />
+            <StarsCanvas />
         </main>
     )
 }
