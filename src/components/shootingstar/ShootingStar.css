@@ -1,0 +1,24 @@
+/* Shooting Star Animation CSS */
+@keyframes shootStar {
+    0% {
+        transform: translate(-100px, -100px) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(100vw, 100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.shooting-star {
+    position: fixed;
+    z-index: auto;
+    top: 0;
+    left: 0;
+    width: 5px; /* Size of the star */
+    height: 5px; /* Size of the star */
+    background: white;
+    box-shadow: 0 0 20px white, 0 0 25px white; /* Glowing effect */
+    border-radius: 50%;
+    animation: shootStar 1s linear forwards; /* Fast movement */
+}

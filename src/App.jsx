@@ -10,6 +10,7 @@ import Contact from "./sections/Contact.jsx";
 import Footer from "./sections/Footer.jsx";
 import Experience from "./sections/Experience.jsx";
 import StarsCanvas from "./components/DayNightCircle";
+import ShootingStar from "./components/shootingstar/ShootingStar.jsx";
 
 const App = () => {
     const [loading, setLoading] = useState(true);
@@ -22,8 +23,10 @@ const App = () => {
     if (loading) {
         return <LoadingPage />;
     }
+
     return (
         <main className="max-w-7xl mx-auto overflow-x-hidden;">
+            <ShootingStar />
             <Navbar />
             <Hero />
             <About />
