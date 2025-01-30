@@ -10,6 +10,12 @@
   --tw-bg-opacity: 1;
 }
 
+@media (prefers-color-scheme: dark) {
+  svg {
+    background: transparent;
+  }
+}
+
 body {
   background: #010103;
   font-family: 'General Sans', sans-serif;
@@ -42,6 +48,10 @@ body {
 
   .text-gray_gradient {
     @apply bg-gradient-to-r from-[#BEC1CF] from-60% via-[#D5D8EA] via-60% to-[#D5D8EA] to-100% bg-clip-text text-transparent;
+  }
+
+  .dark .text-gray_gradient {
+    @apply from-[#8A8D9B] via-[#A1A4B5] to-[#A1A4B5];
   }
 
   /* button component */
@@ -123,7 +133,7 @@ body {
   }
 
   .work-content_logo {
-    @apply rounded-3xl w-16 h-16 p-2 bg-black-600;
+    @apply rounded-3xl w-16 h-16 p-2 bg-black-600 dark:bg-transparent;
   }
 
   .work-content_bar {
@@ -170,7 +180,7 @@ body {
 
   /*  footer */
   .social-icon {
-    @apply w-12 h-12 rounded-full flex justify-center items-center bg-black-300 border border-black-200;
+    @apply w-12 h-12 rounded-full flex justify-center items-center dark:bg-transparent dark:border-transparent bg-black-300 border border-black-200;
   }
 }
 

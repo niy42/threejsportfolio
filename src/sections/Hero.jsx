@@ -23,9 +23,11 @@ export default function Hero() {
 
     useEffect(() => {
         const text = `Hey there, I'm Adeniyi  
-✨ Digital Architect | Blockchain Alchemist | Fullstack Developer   
-🚀 Transforming "What if?" into "What’s next?" 
-   >_  Let’s code the future together!`;
+    I'm a Digital Architect 
+    a Blockchain Alchemist
+    and a Fullstack Developer...   
+    Transforming "What if?" into "What’s next?" 
+    </> Let’s code the future together!`;
 
         setLines(text.split(/\r?\n/).map(line => line.trim()).filter(line => line.length > 0));
     }, []);
