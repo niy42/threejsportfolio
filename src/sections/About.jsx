@@ -70,7 +70,7 @@ const About = () => {
 
     const handleScroll = () => {
         setShowAnimation(window.scrollY > (isSmall ? 600 : 650));
-        setShowAnimation1(window.scrollY > (isSmall ? 800 : 1100));
+        setShowAnimation1(window.scrollY > (isSmall ? 2200 : 1100));
         console.log("Window height on scrollY", window.scrollY);
     };
 

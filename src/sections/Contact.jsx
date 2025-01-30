@@ -56,7 +56,7 @@ const Contact = () => {
     };
 
     const handleScroll = () => {
-        setShowAnimation(window.scrollY > (isMobile ? 5000 : 4000));
+        setShowAnimation(window.scrollY > (isMobile ? 7600 : 4000));
     };
 
     useEffect(() => {
@@ -72,7 +72,7 @@ const Contact = () => {
                 <div className="contact-container md:py-12">
                     <h3 className="head-text head-text_form">Let&apos;s talk</h3>
                     <p className="text-lg text-white-600 mt-3 text-wrap">
-                        Let&apos;s spark something extraordinary! Drop me a message about your project, &nbsp;
+                        Let&apos;s spark something extraordinary! Drop me a message about your project,&nbsp;
                         {showAnimation && (
                             <TypeAnimation
                                 sequence={['collaboration idea, or even just to chat tech – I respond faster than a blockchain confirmation.\n'+
