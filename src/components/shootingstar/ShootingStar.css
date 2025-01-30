@@ -15,8 +15,8 @@
     z-index: auto;
     top: 0;
     left: 0;
-    width: 5px; /* Size of the star */
-    height: 5px; /* Size of the star */
+    width: 3px; /* Size of the star */
+    height: 3px; /* Size of the star */
     background: white;
     box-shadow: 0 0 20px white, 0 0 25px white; /* Glowing effect */
     border-radius: 50%;

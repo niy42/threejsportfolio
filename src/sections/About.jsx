@@ -5,6 +5,7 @@ import {OrbitControls, PerspectiveCamera} from '@react-three/drei';
 import Button from "../components/Button.jsx";
 import {projectItem} from "./Projects.jsx";
 import {useMediaQuery} from "react-responsive";
+import {TypeAnimation} from "react-type-animation";
 
 const Globe = () => {
     const globeRef = useRef();
@@ -38,9 +39,9 @@ const Globe = () => {
 
 const About = () => {
     const [hasCopied, setHasCopied] = useState(false);
-
+    const [showAnimation, setShowAnimation] = useState(false);
+    const [showAnimation1, setShowAnimation1] = useState(false);
     const isSmall = useMediaQuery({ maxWidth: 480 }); // Small screens (e.g., phones)
-
     const [windowSize, setWindowSize] = useState({
         width: window.innerWidth,
         height: window.innerHeight,
@@ -67,6 +68,19 @@ const About = () => {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
+    const handleScroll = () => {
+        setShowAnimation(window.scrollY > (isSmall ? 600 : 650));
+        setShowAnimation1(window.scrollY > (isSmall ? 800 : 1100));
+        console.log("Window height on scrollY", window.scrollY);
+    };
+
+    useEffect(() => {
+        window.addEventListener("scroll", handleScroll);
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        }
+    }, []);
+
     // Adjust camera for small screens
     const cameraPosition = windowSize.width < 768 ? [4, 0, 6] : [0, 0, 5];
 
@@ -79,9 +93,19 @@ const About = () => {
                         <div>
                             <p className="grid-headtext">Hi, I&apos;m Adeniyi</p>
                             <p className="grid-subtext">
-                                With just one year of experience, I have honed and continue to develop my skills in
-                                full-stack
-                                development, with a focus on animated 3D websites.
+                                {showAnimation && (
+                                    <TypeAnimation
+                                        sequence={[
+                                            "With over a year of experience, I have honed and continue to \n" +
+                                            "develop my skills in full-stack development, with a focus on animated 3D websites.",
+                                            1500
+                                        ]}
+                                        wrapper="span"
+                                        cursor={true}
+                                        repeat={Infinity}
+                                        style={{ fontSize: '1em', display: 'inline-block' }}
+                                    />
+                                )}
                             </p>
                         </div>
                     </div>
@@ -146,9 +170,20 @@ const About = () => {
                                 My Passion for Coding
                             </p>
                             <p className="grid-subtext">
-                                I am deeply passionate about coding as it allows me to solve complex problems and
-                                create innovative solutions. For me, coding is not just a profession, it&apos;s a true
-                                passion that drives my continuous learning and growth in the tech industry.
+                                {showAnimation1 && (
+                                    <TypeAnimation
+                                        sequence={[
+                                            "I am deeply passionate about coding as it allows me to solve complex problems and\n" +
+                                            "create innovative solutions. For me, coding is not just a profession, it's a true\n" +
+                                            "passion that drives my continuous learning and growth in the tech industry.",
+                                            1500
+                                        ]}
+                                        wrapper="span"
+                                        cursor={true}
+                                        repeat={Infinity}
+                                        style={{ fontSize: '1em', display: 'inline-block' }}
+                                    />
+                                )}
                             </p>
                         </div>
                     </div>

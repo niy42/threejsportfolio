@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"; // Import React and hooks
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Canvas } from "@react-three/fiber";
 import { PerspectiveCamera } from "@react-three/drei";
 import { Suspense } from "react";
 import CanvasLoader from "../components/CanvasLoader";
@@ -12,12 +12,26 @@ import Cube from "../components/Cube.jsx";
 import HeroCamera from "../components/HeroCamera.jsx";
 import ComputerDeskModel from "../components/computer_desk.jsx";
 import Button from "../components/Button.jsx";
+import { TypeAnimation } from 'react-type-animation';
 
 export default function Hero() {
     const [windowSize, setWindowSize] = useState({
         width: window.innerWidth,
         height: window.innerHeight,
     });
+    const [lines, setLines] = useState([]);
+
+    useEffect(() => {
+        const text = `Hey there, I'm Adeniyi  
+✨ Digital Architect | Blockchain Alchemist | Fullstack Developer   
+🚀 Transforming "What if?" into "What’s next?" 
+   >_  Let’s code the future together!`;
+
+        setLines(text.split(/\r?\n/).map(line => line.trim()).filter(line => line.length > 0));
+    }, []);
+
+    // Create sequence before rendering to prevent re-renders
+    const sequence = lines.flatMap(line => [line, 1500]);
 
     // Media queries for different screen sizes
     const isSmall = useMediaQuery({ maxWidth: 480 }); // Small screens (e.g., phones)
@@ -61,9 +75,17 @@ export default function Hero() {
         <section className="min-h-screen w-full flex flex-col relative max-sm:py-8" id={"home"}>
             <div className="w-full mx-auto flex flex-col sm:mt-36 mt-20 gap-3">
                 <div className="mx-auto inline-flex items-center space-x-2">
-                    <p className="sm:text-3xl text-xl font-medium text-white font-generalsans">
-                        Hi, I am Adeniyi
-                    </p>
+                    <div className="sm:text-3xl leading-relaxed text-xl font-medium text-gray-300 font-generalsans text-wrap whitespace-pre-wrap">
+                        {sequence.length > 0 && (
+                            <TypeAnimation
+                                sequence={sequence}
+                                speed={50}
+                                wrapper="span"
+                                cursor={true}
+                                repeat={Infinity}
+                            />
+                        )}
+                    </div>
                     <img
                         src="/assets/wavetrans.gif"
                         alt="hand-waving"

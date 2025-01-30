@@ -1,9 +1,11 @@
-import { useRef, useState } from "react";
+import {useEffect, useRef, useState} from "react";
 import * as emailjs from '@emailjs/browser';
 import {useMediaQuery} from "react-responsive";
+import {TypeAnimation} from "react-type-animation";
 
 const Contact = () => {
     const isMobile = useMediaQuery({ maxWidth: 440});
+    const [showAnimation, setShowAnimation] = useState(false);
     const formRef = useRef(null);
     const [form, setForm] = useState({
         name: '',
@@ -53,17 +55,34 @@ const Contact = () => {
         }
     };
 
+    const handleScroll = () => {
+        setShowAnimation(window.scrollY > (isMobile ? 5000 : 4000));
+    };
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
     return (
         <section className="c-space my-5 md:my-20" id={'contact'}>
             <div className="relative flex items-center justify-center flex-col min-h-screen">
                 {!isMobile && (<img src={"/assets/terminal.png"} alt={"terminal background"}
-                                   className={"absolute inset-0 min-h-screen"}/>)}
-                <div className="contact-container">
+                                   className={"absolute inset-0 min-h-screen md:h-[1000px] w-full"}/>)}
+                <div className="contact-container md:py-12">
                     <h3 className="head-text head-text_form">Let&apos;s talk</h3>
-                    <p className="text-lg text-white-600 mt-3">
-                        I&apos;m excited to hear from you! Whether you have a question, want to collaborate, or just want to
-                        say hello, feel free to reach out. I'll get back to you as soon as possible. Let's connect and
-                        make something amazing together!
+                    <p className="text-lg text-white-600 mt-3 text-wrap">
+                        Let&apos;s spark something extraordinary! Drop me a message about your project, &nbsp;
+                        {showAnimation && (
+                            <TypeAnimation
+                                sequence={['collaboration idea, or even just to chat tech – I respond faster than a blockchain confirmation.\n'+
+                                ' Whether you\'re refining a concept or ready to build, let\'s turn your vision into code that matters.\n' +
+                                'Available to brainstorm in 3... 2... 1... 🚀', 5000]}
+                                wrapper="span"
+                                cursor={true}
+                                repeat={Infinity}
+                                />
+                        )}
                     </p>
 
                     <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col space-y-4 sm:space-y-7 mt-12">

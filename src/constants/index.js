@@ -281,7 +281,7 @@ export const calculateSizes = (isSmall, isMobile, isTablet ) => {
                 ? [-6, 8, 0]
                 : isTablet
                     ? [-14, 9, 0]
-                    : [-16, 16, 0], // Large screens
+                    : [-18, 18, 0], // Large screens
 
         // Adjust position for the target
         targetPosition: isSmall
