@@ -26,7 +26,7 @@ const App = () => {
     }
 
     return (
-        <main className="min-w-full mx-auto overflow-x-hidden">
+        <main className="block mx-auto overflow-x-hidden">
            <ThemeProvider>
                <ShootingStar />
                <Navbar />
