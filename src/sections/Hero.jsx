@@ -77,7 +77,7 @@ export default function Hero() {
         <section className="min-h-screen w-full flex flex-col relative max-sm:py-8" id={"home"}>
             <div className="w-full mx-auto flex flex-col sm:mt-36 mt-20 gap-3">
                 <div className="mx-auto inline-flex items-center space-x-2">
-                    <div className="sm:text-2xl leading-relaxed text-center text-xl font-medium text-gray-300 font-mono text-wrap whitespace-pre-wrap">
+                    <div className="sm:text-2xl leading-relaxed text-center text-xs font-medium text-gray-300 font-mono text-wrap whitespace-pre-wrap">
                         {sequence.length > 0 && (
                             <TypeAnimation
                                 sequence={sequence}
