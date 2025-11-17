@@ -2,95 +2,138 @@ import { useRef, useEffect } from "react";
 
 const ShootingStar = () => {
   const canvasRef = useRef();
-  const spawnTimeoutRef = useRef(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
-    let width = canvas.width = window.innerWidth;
-    let height = canvas.height = window.innerHeight;
+
+    let width = (canvas.width = window.innerWidth);
+    let height = (canvas.height = window.innerHeight);
 
     const stars = [];
+    const MAX_STARS = 8;
+
+    const colors = [
+      "255,255,255", // white
+      "170,200,255", // blue tint
+      "255,240,200", // warm yellow
+      "220,200,255"  // purple-ish
+    ];
+
+    let lastSpawn = Date.now();
+    let spawnDelay = randomDelay();
+
+    function randomDelay() {
+      return 3000 + Math.random() * 10000; // 3–13 sec
+    }
 
     const createStar = () => {
-      // Spawn from top edge for a more "shooting" feel (random x, y=0)
+      if (stars.length >= MAX_STARS) return;
+
       const startX = Math.random() * width;
-      const startY = 0;
-      const length = 150 + Math.random() * 100;
-      const speed = 10 + Math.random() * 5;
-      const angle = Math.random() * 0.2 + Math.PI / 4; // slightly slanted downward
-      const size = 2 + Math.random() * 2; // bright head size
-      stars.push({ startX, startY, length, speed, angle, size, opacity: 1 });
+      const startY = -50;
+      const angle = Math.random() * 0.4 + 0.3; // cinematic angle
+
+      stars.push({
+        x: startX,
+        y: startY,
+        speed: 6 + Math.random() * 12,
+        angle,
+        size: 1.5 + Math.random() * 2.5,
+        length: 80 + Math.random() * 150,
+        opacity: 1,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        curve: (Math.random() - 0.5) * 0.006,
+        sparkle: Math.random() > 0.75, // only some sparkle
+      });
     };
 
-    const spawnStarWithDelay = () => {
-      createStar();
-      // Schedule next spawn after 5-15 seconds (not immediate, fewer stars)
-      spawnTimeoutRef.current = setTimeout(spawnStarWithDelay, (5000 + Math.random() * 10000));
+    const drawStar = (star) => {
+      star.angle += star.curve;
+      star.x += star.speed * Math.cos(star.angle);
+      star.y += star.speed * Math.sin(star.angle);
+
+      star.opacity -= 0.01;
+      star.length -= 0.8;
+
+      const tailX = star.x - star.length * Math.cos(star.angle);
+      const tailY = star.y - star.length * Math.sin(star.angle);
+
+      const grad = ctx.createLinearGradient(star.x, star.y, tailX, tailY);
+      grad.addColorStop(0, `rgba(${star.color},${star.opacity})`);
+      grad.addColorStop(1, `rgba(${star.color},0)`);
+
+      ctx.strokeStyle = grad;
+      ctx.lineWidth = star.size;
+      ctx.shadowBlur = 10;
+      ctx.shadowColor = "white";
+      ctx.beginPath();
+      ctx.moveTo(star.x, star.y);
+      ctx.lineTo(tailX, tailY);
+      ctx.stroke();
+
+      ctx.fillStyle = `rgba(${star.color},${star.opacity})`;
+      ctx.beginPath();
+      ctx.arc(star.x, star.y, star.size * 2, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Sparkle effect at end of life
+      if (star.sparkle && Math.random() > 0.96) {
+        ctx.fillStyle = `rgba(${star.color},${star.opacity})`;
+        ctx.beginPath();
+        ctx.arc(
+          star.x + Math.random() * 6 - 3,
+          star.y + Math.random() * 6 - 3,
+          2,
+          0,
+          Math.PI * 2
+        );
+        ctx.fill();
+      }
     };
 
-    const animate = () => {
+    const render = () => {
+      if (document.hidden) {
+        requestAnimationFrame(render);
+        return;
+      }
+
       ctx.clearRect(0, 0, width, height);
 
+      const now = Date.now();
+      if (now - lastSpawn > spawnDelay) {
+        createStar();
+        lastSpawn = now;
+        spawnDelay = randomDelay();
+      }
+
       stars.forEach((star, i) => {
-        let { startX, startY, length, speed, angle, size, opacity } = star;
+        drawStar(star);
 
-        // Calculate tail end position (back along the direction of travel)
-        const tailX = startX - length * Math.cos(angle);
-        const tailY = startY - length * Math.sin(angle);
-
-        // Create gradient tail (fading from head to tail)
-        const grad = ctx.createLinearGradient(startX, startY, tailX, tailY);
-        grad.addColorStop(0, `rgba(255,255,255,${opacity})`);
-        grad.addColorStop(1, "rgba(255,255,255,0)");
-
-        // Draw tail
-        ctx.strokeStyle = grad;
-        ctx.lineWidth = size;
-        ctx.shadowBlur = 10;
-        ctx.shadowColor = "white";
-        ctx.beginPath();
-        ctx.moveTo(startX, startY);
-        ctx.lineTo(tailX, tailY);
-        ctx.stroke();
-
-        // Draw bright head
-        ctx.fillStyle = `rgba(255,255,255,${opacity})`;
-        ctx.beginPath();
-        ctx.arc(startX, startY, size * 1.5, 0, Math.PI * 2);
-        ctx.fill();
-
-        // Update position (move head forward)
-        star.startX += speed * Math.cos(angle);
-        star.startY += speed * Math.sin(angle);
-        star.opacity -= 0.02;
-        star.length -= 1; // Gradually shorten tail as it fades
-
-        // Remove faded or off-screen stars
-        if (star.opacity <= 0 || star.length <= 0 || star.startX > width + 50 || star.startY > height + 50) {
+        if (
+          star.opacity <= 0 ||
+          star.length <= 0 ||
+          star.x > width + 100 ||
+          star.y > height + 100
+        ) {
           stars.splice(i, 1);
         }
       });
 
-      requestAnimationFrame(animate);
+      requestAnimationFrame(render);
     };
 
-    // Initial spawn after a delay (not immediate)
-    spawnTimeoutRef.current = setTimeout(spawnStarWithDelay, 15000);
-
-    animate();
+    render();
 
     const handleResize = () => {
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
     };
+
     window.addEventListener("resize", handleResize);
 
     return () => {
       window.removeEventListener("resize", handleResize);
-      if (spawnTimeoutRef.current) {
-        clearTimeout(spawnTimeoutRef.current);
-      }
     };
   }, []);
 
@@ -104,7 +147,7 @@ const ShootingStar = () => {
         width: "100%",
         height: "100%",
         pointerEvents: "none",
-        zIndex: 9999,
+        zIndex: -1, // ⭐ Behind everything
       }}
     />
   );
