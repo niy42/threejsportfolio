@@ -155,8 +155,8 @@ const About = () => {
                     <directionalLight position={[5, 10, 5]} intensity={1} />
                     <Globe />
                     <OrbitControls
-                      minDistance={isSmall ? 6.1 : 4.8}
-                      maxDistance={10}
+                      minDistance={isSmall ? 5.6 : 4.8}
+                      maxDistance={isSmall ? 3 : 10}
                     />
                   </Suspense>
                 </Canvas>

@@ -1,10 +1,11 @@
-@import url('https://fonts.cdnfonts.com/css/general-sans');
+@import url("https://fonts.cdnfonts.com/css/general-sans");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-*, root{
+*,
+root {
   scroll-behavior: smooth;
   --tw-text-opacity: 1;
   --tw-bg-opacity: 1;
@@ -18,7 +19,7 @@
 
 body {
   background: #010103;
-  font-family: 'General Sans', sans-serif;
+  font-family: "General Sans", sans-serif;
 }
 
 @layer utilities {
@@ -69,7 +70,7 @@ body {
 
   /* hero section */
   .hero_tag {
-    @apply text-center xl:text-6xl md:text-5xl sm:text-4xl text-3xl font-generalsans font-black !leading-normal;
+    @apply text-center xl:text-6xl md:text-5xl sm:text-4xl text-lg font-generalsans font-black !leading-normal;
   }
 
   /* about section */
@@ -117,11 +118,11 @@ body {
 
   /*  work experience section */
   .work-container {
-    @apply grid lg:grid-cols-3 grid-cols-1 gap-5 mt-12;
+    @apply grid lg:grid-cols-3 grid-cols-1 sm:gap-5 max-sm:space-y-6 mt-12;
   }
 
   .work-canvas {
-    @apply col-span-1 w-full max-sm:h-96 rounded-lg bg-black-200 border border-black-300;
+    @apply col-span-1 w-full max-sm:h-[550px] rounded-lg bg-black-200 border border-black-300;
   }
 
   .work-content {
@@ -159,7 +160,7 @@ body {
     border-radius: 0.375rem;
     font-size: 1.125rem;
     line-height: 1.75rem;
-    background-color: rgba(28,28,33);
+    background-color: rgba(28, 28, 33);
     outline: none;
     min-height: 3.5rem;
     color: rgb(228 228 230 / var(--tw-text-opacity)); /* Text color */
@@ -198,7 +199,7 @@ body {
   border-radius: 0.375rem;
   font-size: 1.125rem;
   line-height: 1.75rem;
-  background-color: rgba(28,28,33);
+  background-color: rgba(28, 28, 33);
   outline: none;
   min-height: 3.5rem;
   color: rgb(228 228 230 / var(--tw-text-opacity));
@@ -214,7 +215,7 @@ body {
   margin-bottom: 16rem; /* Adds space between the button and the bottom border */
   padding: 0.75rem 1.5rem;
   border-radius: 0.375rem;
-  background-color:  rgb(58 58 73 / var(--tw-bg-opacity));
+  background-color: rgb(58 58 73 / var(--tw-bg-opacity));
   color: #fff;
   text-align: center;
   font-size: 1rem;
@@ -234,11 +235,11 @@ body {
 
 .arrow-gradient {
   background-image: linear-gradient(
-          to right,
-          rgba(255, 255, 255, 0.1) 10%,
-          rgba(255, 255, 255, 0.000025) 50%,
-          rgba(255, 255, 255, 0.000025) 50%,
-          rgba(255, 255, 255, 0.025) 100%
+    to right,
+    rgba(255, 255, 255, 0.1) 10%,
+    rgba(255, 255, 255, 0.000025) 50%,
+    rgba(255, 255, 255, 0.000025) 50%,
+    rgba(255, 255, 255, 0.025) 100%
   );
 }
 
@@ -277,22 +278,25 @@ body {
   height: 7px;
   border-radius: 90%;
   background-color: #ff4343;
-  animation: load 2s cubic-bezier(.23,.7,.8,.3) infinite;
+  animation: load 2s cubic-bezier(0.23, 0.7, 0.8, 0.3) infinite;
   /*animation-delay: 2s;*/
 }
 
 @keyframes load {
-  0% { left:-15%; }
-  100%{ left:115%; }
+  0% {
+    left: -15%;
+  }
+  100% {
+    left: 115%;
+  }
 }
 
 .mov {
-  animation-delay: .2s;
-
+  animation-delay: 0.2s;
 }
 
 .mov:nth-child(1) {
-  animation-delay: .1s;
+  animation-delay: 0.1s;
 }
 
 .mov:nth-child(2) {

@@ -34,12 +34,15 @@ export default function Hero() {
 
   // Lines for TypeAnimation (outside Canvas)
   const lines = useMemo(() => {
-    const text = `Hey there, I'm Adeniyi  
-I'm a Digital Architect 
-a Blockchain Alchemist
-and a Fullstack Developer...   
-Transforming "What if?" into "What’s next?" 
-</> Let’s code the future together!`;
+    const text = `Hey there, I'm Adeniyi.
+A Digital Architect.
+A Blockchain Alchemist.
+A Full-Stack Developer.
+
+I craft intelligent systems
+and turn imagination into innovation.
+
+</> Welcome to my universe.`;
 
     return text
       .split(/\r?\n/)
@@ -148,7 +151,7 @@ Transforming "What if?" into "What’s next?"
         <Button
           name={"Let's work together"}
           isBeam
-          containerClass={"sm:w-fit w-full sm:min-w-9"}
+          containerClass={"w-fit sm:min-w-9"}
           href={"about"}
         />
       </div>
