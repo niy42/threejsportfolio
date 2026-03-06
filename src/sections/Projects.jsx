@@ -4,12 +4,14 @@ import { Canvas } from "@react-three/fiber";
 import { Center, OrbitControls } from "@react-three/drei";
 import CanvasLoader from "../components/CanvasLoader.jsx";
 import DemoComputer from "../components/DemoComputer.jsx";
+import { useMediaQuery } from "react-responsive";
 
 export const projectItem = myProjects[0].spotlight;
 
 export default function Projects() {
   const [selectedProjectIndex, setSelectedProjectIndex] = useState(0);
   const projectCount = myProjects.length;
+  const isSmall = useMediaQuery({ maxWidth: 480 });
 
   const currentProject = useMemo(
     () => myProjects[selectedProjectIndex],
@@ -144,7 +146,7 @@ export default function Projects() {
                 enableDamping
                 dampingFactor={0.05}
                 maxPolarAngle={Math.PI / 2}
-                minDistance={4.9}
+                minDistance={isSmall ? 8 : 4.9}
                 maxDistance={8}
               />
             </Canvas>

@@ -5,9 +5,11 @@ import { Suspense, useState, useEffect, useCallback } from "react";
 import Developer from "../components/Developer.jsx";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { useMediaQuery } from "react-responsive";
 
 const Experience = () => {
   const [animationName, setAnimationName] = useState("idle");
+  const isSmall = useMediaQuery({ maxWidth: 480 });
 
   useEffect(() => {
     AOS.init({
@@ -45,7 +47,7 @@ const Experience = () => {
                 <Developer
                   position={[0, -1, 2]}
                   rotation={[0, 0, 0]}
-                  scale={2.5}
+                  scale={isSmall ? 2.6 : 2.5}
                   animationName={animationName}
                 />
               </Suspense>
