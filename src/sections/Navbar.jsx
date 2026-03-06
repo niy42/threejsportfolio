@@ -95,7 +95,8 @@ const Navbar = () => {
         });
       },
       {
-        threshold: 0.6,
+        rootMargin: "-35% 0px -35% 0px",
+        threshold: 0,
       },
     );
 
