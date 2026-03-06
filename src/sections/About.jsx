@@ -44,6 +44,7 @@ const Globe = () => {
 
 const About = () => {
   const isSmall = useMediaQuery({ maxWidth: 480 });
+  const isXtraSmall = useMediaQuery({ maxWidth: 380 });
   const [windowSize, setWindowSize] = useState({
     width: window.innerWidth,
     height: window.innerHeight,
@@ -155,7 +156,7 @@ const About = () => {
                     <directionalLight position={[5, 10, 5]} intensity={1} />
                     <Globe />
                     <OrbitControls
-                      minDistance={isSmall ? 5.6 : 4.8}
+                      minDistance={isSmall ? 6.6 : isXtraSmall ? 12 : 4.8}
                       maxDistance={isSmall ? 3 : 10}
                     />
                   </Suspense>
