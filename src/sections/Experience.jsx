@@ -47,7 +47,7 @@ const Experience = () => {
                 <Developer
                   position={[0, -1, 2]}
                   rotation={[0, 0, 0]}
-                  scale={isSmall ? 2.6 : 2.5}
+                  scale={isSmall ? 2.55 : 2.5}
                   animationName={animationName}
                 />
               </Suspense>
@@ -56,6 +56,9 @@ const Experience = () => {
                 enableZoom={false}
                 enablePan={false}
                 enableRotate={false}
+                dpr={[1, 1.25]}
+                performance={{ min: 0.5 }}
+                style={{ pointerEvents: isSmall ? "none" : "auto" }}
               />
             </Canvas>
           </div>

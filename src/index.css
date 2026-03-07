@@ -87,7 +87,7 @@ body {
   }
 
   .grid-subtext {
-    @apply text-[#afb0b6] text-sm flex-wrap font-generalsans;
+    @apply text-[#afb0b6] text-sm sm:text-base flex-wrap font-generalsans;
   }
 
   .copy-container {
