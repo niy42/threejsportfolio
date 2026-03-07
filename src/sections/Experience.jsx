@@ -71,6 +71,7 @@ const Experience = () => {
                   <div
                     key={id || index}
                     className="work-content_container group"
+                    onClick={() => setAnimationName(animation.toLowerCase())}
                     onPointerOver={() =>
                       handleAnimationChange(animation.toLowerCase())
                     }
@@ -90,7 +91,7 @@ const Experience = () => {
                       <p className="text-sm mb-5">
                         {pos} — {duration}
                       </p>
-                      <p className="group-hover:text-white transition duration-500">
+                      <p className="group-hover:text-white text-sm sm:text-base transition duration-500">
                         {title}
                       </p>
                     </div>

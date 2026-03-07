@@ -75,12 +75,12 @@ export default function Projects() {
           </div>
 
           <div className="flex flex-col gap-5 text-white-600 my-5">
-            <p className="text-white text-2xl font-semibold">
+            <p className="text-white text-lg sm:text-2xl font-semibold">
               {currentProject.title}
             </p>
 
-            <p>{currentProject.desc}</p>
-            <p>{currentProject.subdesc}</p>
+            <p className="text-sm sm:text-base">{currentProject.desc}</p>
+            <p className="text-sm sm:text-base">{currentProject.subdesc}</p>
           </div>
 
           <div className="flex items-center justify-between flex-wrap gap-5">
@@ -98,7 +98,7 @@ export default function Projects() {
               target="_blank"
               rel="noreferrer noopener"
             >
-              <p>Check Dev App</p>
+              <p className="text-sm sm:text-base">Check Dev App</p>
               <img src="/assets/arrow-up.png" className="w-3 h-3" />
             </a>
           </div>
