@@ -2,12 +2,11 @@ import { useEffect, useRef, useState, useCallback } from "react";
 import emailjs from "@emailjs/browser";
 import { useMediaQuery } from "react-responsive";
 import { TypeAnimation } from "react-type-animation";
+import { enqueueSnackbar } from "notistack";
 
 const Contact = () => {
   const isMobile = useMediaQuery({ maxWidth: 440 });
-
   const sectionRef = useRef(null);
-
   const [showAnimation, setShowAnimation] = useState(false);
 
   const [form, setForm] = useState({
@@ -26,7 +25,6 @@ const Contact = () => {
       [name]: value,
     }));
   }, []);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -45,9 +43,17 @@ const Contact = () => {
         "ddMccg8aDfcuVdfLl",
       );
 
+      enqueueSnackbar("Message sent successfully! 🚀", {
+        variant: "success",
+      });
+
       setForm({ name: "", email: "", message: "" });
     } catch (error) {
       console.error(error);
+
+      enqueueSnackbar("Failed to send message. Please try again.", {
+        variant: "error",
+      });
     }
 
     setLoading(false);
