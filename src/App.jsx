@@ -10,6 +10,7 @@ import Footer from "./sections/Footer.jsx";
 import Experience from "./sections/Experience.jsx";
 // import ShootingStar from "./components/shootingstar/ShootingStar.jsx";
 import { ThemeProvider } from "./context/ThemeContext.jsx";
+import { AppSnackbarProvider } from "./components/AppSnackbarProvider/AppSnackbarProvider.jsx";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -26,20 +27,22 @@ const App = () => {
 
   return (
     <main className="block mx-auto overflow-x-hidden min-h-screen">
-      <ThemeProvider>
-        {/* <ShootingStar /> */}
-        <Navbar />
-        <Hero />
-        <About />
-        <Projects />
-        <Clients />
-        <Experience />
-        <Contact />
-        <Footer />
-        <Suspense fallback={null}>
-          <StarsCanvas />
-        </Suspense>
-      </ThemeProvider>
+      <AppSnackbarProvider>
+        <ThemeProvider>
+          {/* <ShootingStar /> */}
+          <Navbar />
+          <Hero />
+          <About />
+          <Projects />
+          <Clients />
+          <Experience />
+          <Contact />
+          <Footer />
+          <Suspense fallback={null}>
+            <StarsCanvas />
+          </Suspense>
+        </ThemeProvider>
+      </AppSnackbarProvider>
     </main>
   );
 };
