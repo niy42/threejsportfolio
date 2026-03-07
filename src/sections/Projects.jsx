@@ -123,7 +123,7 @@ export default function Projects() {
         {/* RIGHT PANEL (3D) */}
         <div
           ref={canvasContainerRef}
-          className="border-black-300 bg-black-200 rounded-lg h-96 md:h-full"
+          className="border-black-300 -z-10 bg-black-200 rounded-lg h-96 md:h-full"
         >
           {loadCanvas && (
             <Canvas camera={{ position: [0, 2, 8], fov: 45 }}>
