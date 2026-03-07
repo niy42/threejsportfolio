@@ -49,7 +49,7 @@ const Contact = () => {
 
       setForm({ name: "", email: "", message: "" });
     } catch (error) {
-      console.error(error);
+      // console.error(error);
 
       enqueueSnackbar("Failed to send message. Please try again.", {
         variant: "error",
