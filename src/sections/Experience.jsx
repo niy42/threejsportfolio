@@ -33,7 +33,11 @@ const Experience = () => {
         <div className="work-container">
           {/* 3D Canvas */}
           <div className="work-canvas">
-            <Canvas dpr={[1, 1.5]} performance={{ min: 0.5 }}>
+            <Canvas
+              dpr={[1, 1.25]}
+              performance={{ min: 0.5 }}
+              style={{ pointerEvents: isSmall ? "none" : "auto" }}
+            >
               <PerspectiveCamera
                 makeDefault
                 position={[-0.15, 5.2, 4.5]}
@@ -56,9 +60,6 @@ const Experience = () => {
                 enableZoom={false}
                 enablePan={false}
                 enableRotate={false}
-                dpr={[1, 1.25]}
-                performance={{ min: 0.5 }}
-                style={{ pointerEvents: isSmall ? "none" : "auto" }}
               />
             </Canvas>
           </div>
