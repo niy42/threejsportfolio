@@ -80,10 +80,12 @@ const Contact = () => {
           />
         )}
 
-        <div className="contact-container md:py-12">
-          <h3 className="head-text head-text_form">Let's talk</h3>
+        <div className="contact-container md:py-12 pt-15">
+          <h3 className="head-text sm:head-text_form max-sm:mt-16">
+            Let's talk
+          </h3>
 
-          <p className="text-lg text-white-600 mt-3">
+          <p className="text-sm sm:text-lg text-white-600 mt-3">
             Let&apos;s spark something extraordinary! Drop me a message about
             your project,&nbsp;
             {showAnimation && (
@@ -111,7 +113,7 @@ const Contact = () => {
                 value={form.name}
                 onChange={handleChange}
                 required
-                className="field-input_mod"
+                className="field-input_form"
                 placeholder="John Doe"
               />
             </label>
@@ -125,7 +127,7 @@ const Contact = () => {
                 value={form.email}
                 onChange={handleChange}
                 required
-                className="field-input_mod"
+                className="field-input_form"
                 placeholder="johndoe@gmail.com"
               />
             </label>
@@ -139,8 +141,8 @@ const Contact = () => {
                 onChange={handleChange}
                 rows={5}
                 required
-                className="field-input_mod"
-                placeholder="Hi, I wanna give you a job..."
+                className="field-input_form"
+                placeholder="Tell me about your project, idea, or how I can help..."
               />
             </label>
 

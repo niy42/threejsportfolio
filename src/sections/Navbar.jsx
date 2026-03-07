@@ -24,7 +24,7 @@ const NavItems = memo(({ activeSection, closeMenu }) => {
         <li key={id} className="nav-li">
           <button
             onClick={() => handleClick(href)}
-            className={`nav-link_a transition-colors duration-300 ${
+            className={`nav-link_a text-sm sm:text-base transition-colors duration-300 ${
               activeSection === href.replace("#", "")
                 ? "text-white font-semibold"
                 : "text-gray-400"

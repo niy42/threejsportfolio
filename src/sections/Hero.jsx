@@ -108,7 +108,7 @@ and turn imagination into innovation.
       {/* Top text */}
       <div className="w-full mx-auto flex flex-col sm:mt-36 mt-20 gap-3 z-20 relative">
         <div className="mx-auto inline-flex items-center space-x-2">
-          <div className="sm:text-2xl leading-relaxed text-center text-xs font-medium text-gray-300 font-mono whitespace-pre-wrap">
+          <div className="sm:text-2xl leading-relaxed text-center text-sm font-medium text-gray-300 font-mono whitespace-pre-wrap">
             {sequence.length > 0 && (
               <TypeAnimation
                 sequence={sequence}
