@@ -9,6 +9,7 @@ const CanvasLoader = () => {
     <Html
       as="div"
       center
+      zIndexRange={[100, 0]}
       style={{
         display: "flex",
         justifyContent: "center",
