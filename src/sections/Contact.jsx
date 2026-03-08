@@ -43,7 +43,7 @@ const Contact = () => {
         "ddMccg8aDfcuVdfLl",
       );
 
-      enqueueSnackbar("Message sent successfully! 🚀", {
+      enqueueSnackbar("Message sent successfully!", {
         variant: "success",
       });
 

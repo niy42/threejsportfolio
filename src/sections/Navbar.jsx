@@ -40,6 +40,7 @@ const NavItems = memo(({ activeSection, closeMenu }) => {
 
 const ThemeToggleButton = memo(({ className = "" }) => {
   const { toggleDarkMode, isDarkMode } = useTheme();
+  console.log("isDark mode: ", isDarkMode);
 
   return (
     <button
@@ -137,12 +138,18 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         <div
-          className={`nav-sidebar transition-all duration-500 ease-in-out
-          ${isMenuOpen ? "min-screen-h" : "h-0 overflow-hidden"}`}
+          className={`nav-sidebar transform transition-[transform,opacity] duration-500
+  ease-[cubic-bezier(0.22,1,0.36,1)]
+  ${
+    isMenuOpen
+      ? "translate-y-0 opacity-100 pointer-events-auto"
+      : "-translate-y-6 opacity-0 pointer-events-none"
+  }
+`}
         >
           <nav className="relative p-5 space-y-3">
             <NavItems activeSection={activeSection} closeMenu={closeMenu} />
-            <ThemeToggleButton className="relative left-6 -bottom-2" />
+            <ThemeToggleButton className="relative left-6 -bottom-2 hidden" />
           </nav>
         </div>
       </div>
