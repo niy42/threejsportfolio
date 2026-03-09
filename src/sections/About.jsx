@@ -224,7 +224,7 @@ const About = () => {
                   src={hasCopied ? "/assets/tick.svg" : "/assets/copy.svg"}
                   alt="copy"
                 />
-                <p className="text-gray_gradient text-white font-medium md:text-md lg:text-lg">
+                <p className="text-gray_gradient text-white font-medium text-base lg:text-lg">
                   obanlaniyi42@gmail.com
                 </p>
               </div>
